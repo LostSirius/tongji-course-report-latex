@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "General Tongji University Course Report LaTeX Template"
+abstract: "An unofficial, discipline-neutral LaTeX template for course reports at Tongji University."
+authors:
+  - name: LostSirius
+version: 2.0.0
+date-released: 2026-08-28
+license: LPPL-1.3c
+repository-code: "https://github.com/LostSirius/tongji-course-report-latex"
+url: "https://lostsirius.github.io/tongji-course-report-latex/"
+keywords:
+  - LaTeX
+  - Tongji University
+  - course report
+  - assignment

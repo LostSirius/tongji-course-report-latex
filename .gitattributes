@@ -1,0 +1,6 @@
+# Normalize text files for reproducible cross-platform builds.
+* text=auto eol=lf
+
+*.bat text eol=crlf
+*.png binary
+*.pdf binary

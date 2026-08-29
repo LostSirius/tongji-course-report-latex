@@ -1,0 +1,27 @@
+{
+  "name": "tongji-course-report",
+  "version": "2.0.0",
+  "description": "A discipline-neutral LaTeX course report template for Tongji University",
+  "author": "LostSirius",
+  "contributors": [
+    "LostSirius"
+  ],
+  "keywords": [
+    "latex",
+    "tongji-university",
+    "course-report",
+    "assignment",
+    "xelatex",
+    "lualatex"
+  ],
+  "homepage": "https://lostsirius.github.io/tongji-course-report-latex/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LostSirius/tongji-course-report-latex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LostSirius/tongji-course-report-latex/issues"
+  },
+  "upstream": "https://github.com/TJ-CSCCG/tongji-undergrad-thesis",
+  "license": "LPPL-1.3c"
+}

@@ -1,0 +1,6 @@
+title: 同济大学通用课程报告 LaTeX 模板
+description: 面向同济大学全学科的非官方通用课程报告 LaTeX 模板
+theme: jekyll-theme-architect
+show_downloads: true
+github:
+  repository_url: https://github.com/LostSirius/tongji-course-report-latex

@@ -1,0 +1,81 @@
+\documentclass[
+  oneside,
+  fullwidthstop=false,
+  fontset=fandol,
+  times=false,
+  minted=false, % 改为 true 可启用 Pygments 高亮（需 -shell-escape）
+]{tongjithesis}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc,shadows,trees,arrows.meta,backgrounds,fit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 参考文献设置：请选择以下两种方式之一（A 或 B）
+% Citation setup: Please choose ONE method (A or B)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A. 使用 biblatex（推荐；可按学科更换 style）
+% A. Using biblatex (recommended, more powerful)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage[
+%   backend=biber,      % 使用biber作为后端处理引擎
+%   style=gb7714-2015,  % 中文报告常用 GB/T 7714；请以课程要求为准
+%   natbib=true,        % 兼容natbib命令
+% ]{biblatex}
+% \addbibresource{bib/note.bib} % 指定参考文献数据库文件
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% B. 使用 bibtex 配合 gbt7714 宏包（传统方式）
+% B. Using bibtex with gbt7714 package (traditional method)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage[sort&compress]{gbt7714}  % 加载gbt7714宏包，支持排序和压缩引用编号
+% \bibliographystyle{gbt7714-numerical} % 设置符合GB/T 7714标准的数字式引用样式
+% \setlength{\bibsep}{3pt} % 设置参考文献条目之间的间距
+
+\begin{document}
+
+\input{sections/frontcover.tex}
+\clearpage
+
+\pagestyle{firststyle}
+\input{sections/00_abstract.tex}
+
+\clearpage
+\tableofcontents   % 放置目录
+\cleardoublepage
+
+\pagestyle{mainstyle}
+\input{sections/01_intro}
+\clearpage
+\input{sections/02_related}
+\clearpage
+\input{sections/03_model}
+\clearpage
+\input{sections/04_experiment}
+\clearpage
+\input{sections/05_results}
+\clearpage
+\input{sections/06_discussion}
+\clearpage
+\input{sections/07_conclusion}
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 参考文献列表生成（选择与上方相同的选项A或B）
+% Reference list generation (choose the same option A or B as above)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% A. 如果使用biblatex，取消下面一行的注释
+% A. If using biblatex, uncomment the line below
+% \printbibliography[heading=bibintoc,title=参考文献]
+
+% B. 如果使用bibtex，取消下面的注释
+% B. If using bibtex, uncomment the lines below
+% \addcontentsline{toc}{section}{参考文献}  % 将参考文献项加入目录
+% \bibliography{bib/note.bib}  % 指定参考文献数据库文件
+
+
+\clearpage
+\input{sections/appendix.tex}
+\end{document}
