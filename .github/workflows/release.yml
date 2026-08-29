@@ -389,7 +389,7 @@ jobs:
           # Create source archive with complete repository (excluding build artifacts and .git)
           # Note: Keep figures/tongji.pdf as it's required for template compilation
           # Create archives in parent directory to avoid circular dependency
-          tar -czf "../tongjithesis-source-v${PACKAGE_VERSION}.tar.gz" \
+          tar -czf "../tongji-course-report-source-v${PACKAGE_VERSION}.tar.gz" \
             --exclude='.git' \
             --exclude='main.pdf' \
             --exclude='*.aux' \
@@ -418,7 +418,7 @@ jobs:
             exit 1
           }
 
-          zip -r "tongjithesis-source-v${PACKAGE_VERSION}.zip" "$(basename "$GITHUB_WORKSPACE")" \
+          zip -r "tongji-course-report-source-v${PACKAGE_VERSION}.zip" "$(basename "$GITHUB_WORKSPACE")" \
             -x "$(basename "$GITHUB_WORKSPACE")/.git/*" \
             -x "$(basename "$GITHUB_WORKSPACE")/main.pdf" \
             -x "$(basename "$GITHUB_WORKSPACE")/*.aux" \
@@ -447,17 +447,17 @@ jobs:
           }
 
           # Move archives back to workspace
-          mv "../tongjithesis-source-v${PACKAGE_VERSION}.tar.gz" . || {
+          mv "../tongji-course-report-source-v${PACKAGE_VERSION}.tar.gz" . || {
             echo "Error: Failed to move tar.gz archive back"
             exit 1
           }
-          mv "../tongjithesis-source-v${PACKAGE_VERSION}.zip" . || {
+          mv "../tongji-course-report-source-v${PACKAGE_VERSION}.zip" . || {
             echo "Error: Failed to move zip archive back"
             exit 1
           }
 
           echo "Source code archives created:"
-          ls -la tongjithesis-source-*.tar.gz tongjithesis-source-*.zip
+          ls -la tongji-course-report-source-*.tar.gz tongji-course-report-source-*.zip
 
       - name: Create CTAN package archive
         run: |
@@ -495,14 +495,14 @@ jobs:
 
           # Validate source archives
           echo "📂 Checking source tar.gz archive:"
-          tar -tzf "tongjithesis-source-v${PACKAGE_VERSION}.tar.gz" | grep -E "(main\.tex|style/|figures/tongji\.pdf|README\.md)" || echo "⚠️  Expected files not found in source archive"
+          tar -tzf "tongji-course-report-source-v${PACKAGE_VERSION}.tar.gz" | grep -E "(main\.tex|style/|figures/tongji\.pdf|README\.md)" || echo "⚠️  Expected files not found in source archive"
 
           echo "📂 Checking source zip archive:"
-          unzip -l "tongjithesis-source-v${PACKAGE_VERSION}.zip" | grep -E "(main\.tex|style/|figures/tongji\.pdf|README\.md)" || echo "⚠️  Expected files not found in source archive"
+          unzip -l "tongji-course-report-source-v${PACKAGE_VERSION}.zip" | grep -E "(main\.tex|style/|figures/tongji\.pdf|README\.md)" || echo "⚠️  Expected files not found in source archive"
 
           # Validate source archive excludes build artifacts
           echo "🚫 Checking source archives exclude build artifacts:"
-          if tar -tzf "tongjithesis-source-v${PACKAGE_VERSION}.tar.gz" | grep -E "\.(aux|log|out|toc|bbl)$"; then
+          if tar -tzf "tongji-course-report-source-v${PACKAGE_VERSION}.tar.gz" | grep -E "\.(aux|log|out|toc|bbl)$"; then
             echo "⚠️  Warning: Build artifacts found in source archive"
           else
             echo "✅ No build artifacts found in source archive"
@@ -517,8 +517,8 @@ jobs:
           path: |
             ctan/tongjithesis-ctan-v${{ env.PACKAGE_VERSION }}.tar.gz
             ctan/tongjithesis-ctan-v${{ env.PACKAGE_VERSION }}.zip
-            tongjithesis-source-v${{ env.PACKAGE_VERSION }}.tar.gz
-            tongjithesis-source-v${{ env.PACKAGE_VERSION }}.zip
+            tongji-course-report-source-v${{ env.PACKAGE_VERSION }}.tar.gz
+            tongji-course-report-source-v${{ env.PACKAGE_VERSION }}.zip
             ctan/tongjithesis/
           retention-days: 90
 
@@ -693,8 +693,8 @@ jobs:
             - `tongjithesis-ctan-v${{ env.PACKAGE_VERSION }}.zip` - CTAN alternative format
 
             **Complete Source Code** (for end users):
-            - `tongjithesis-source-v${{ env.PACKAGE_VERSION }}.tar.gz` - Full repository with examples
-            - `tongjithesis-source-v${{ env.PACKAGE_VERSION }}.zip` - Full repository with examples
+            - `tongji-course-report-source-v${{ env.PACKAGE_VERSION }}.tar.gz` - Full repository with examples
+            - `tongji-course-report-source-v${{ env.PACKAGE_VERSION }}.zip` - Full repository with examples
 
             **Compiled Examples** (preview final output):
             - `example-linux-xelatex.pdf` / `example-linux-lualatex.pdf`
@@ -727,8 +727,8 @@ jobs:
           files: |
             ctan/tongjithesis-ctan-v${{ env.PACKAGE_VERSION }}.tar.gz
             ctan/tongjithesis-ctan-v${{ env.PACKAGE_VERSION }}.zip
-            tongjithesis-source-v${{ env.PACKAGE_VERSION }}.tar.gz
-            tongjithesis-source-v${{ env.PACKAGE_VERSION }}.zip
+            tongji-course-report-source-v${{ env.PACKAGE_VERSION }}.tar.gz
+            tongji-course-report-source-v${{ env.PACKAGE_VERSION }}.zip
             compiled-pdfs/example-*.pdf
           draft: true
           prerelease: false
