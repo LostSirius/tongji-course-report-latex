@@ -133,11 +133,10 @@ $env:EXTRA_LATEXMK_OPT="-shell-escape"; .\make.bat thesis
 
 This repository is a derived work based on:
 
-- [TJ-CSCCG/tongji-undergrad-thesis](https://github.com/TJ-CSCCG/tongji-undergrad-thesis), which provides the original course-project template and code base.
+- [TJ-CSCCG/TongjiThesis](https://github.com/TJ-CSCCG/TongjiThesis), from which this project's initial code and repository structure were derived.
 
-The generalization work also consulted the public interfaces, repository organization, and documentation practices of the following projects. No direct code copying from these reference projects is claimed:
+The generalization work also consulted the public interfaces, repository organization, and documentation practices of the following projects. Apart from the upstream project above, no direct code copying from these reference projects is claimed:
 
-- [TJ-CSCCG/TongjiThesis](https://github.com/TJ-CSCCG/TongjiThesis)
 - [jweihe/UCAS_Latex_Template](https://github.com/jweihe/UCAS_Latex_Template)
 - [nju-lug/NJUrepo](https://github.com/nju-lug/NJUrepo)
 - [tuna/thuthesis](https://github.com/tuna/thuthesis)
@@ -152,7 +151,7 @@ Suggested citation:
 
 > LostSirius. *General Tongji University Course Report LaTeX Template*, version 2.0.0, 2026.
 
-For template research, redistribution, or derivative development, please also acknowledge the upstream `TJ-CSCCG/tongji-undergrad-thesis` project.
+For template research, redistribution, or derivative development, please also acknowledge the upstream `TJ-CSCCG/TongjiThesis` project.
 
 ## License
 

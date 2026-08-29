@@ -243,7 +243,7 @@ jobs:
           ## Acknowledgements
 
           - This customized copy is maintained by LostSirius
-          - Derived from the TJ-CSCCG tongji-undergrad-thesis template
+          - Derived from the TJ-CSCCG TongjiThesis template
 
           ## Reporting Issues
 
@@ -714,13 +714,13 @@ jobs:
 
             ### 🔗 Links
             - [GitHub Repository](${{ github.server_url }}/${{ github.repository }})
-            - [Upstream Project](https://github.com/TJ-CSCCG/tongji-undergrad-thesis)
+            - [Upstream Project](https://github.com/TJ-CSCCG/TongjiThesis)
 
             ### 📝 Changelog
             See `CHANGELOG.md` in the source archive for the complete version history.
 
             ### 🙏 Acknowledgments
-            Derived from the TJ-CSCCG `tongji-undergrad-thesis` project and informed by the public documentation practices of TongjiThesis and other university LaTeX templates.
+            Derived from the TJ-CSCCG `TongjiThesis` project and informed by the public documentation practices of other university LaTeX templates.
 
             ---
             **Note**: The workflow intentionally creates a draft release so assets can be reviewed before publication.

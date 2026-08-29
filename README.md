@@ -227,11 +227,10 @@ $env:EXTRA_LATEXMK_OPT="-shell-escape"; .\make.bat thesis
 
 本项目是派生作品，基础代码来源于：
 
-- [TJ-CSCCG/tongji-undergrad-thesis](https://github.com/TJ-CSCCG/tongji-undergrad-thesis)：原课程设计/大作业模板与本项目代码基础。
+- [TJ-CSCCG/TongjiThesis](https://github.com/TJ-CSCCG/TongjiThesis)：本项目的初始代码与仓库结构由此派生。
 
-本次通用化重构重点参考了以下公开项目的接口设计、仓库组织和文档实践；除上述基础项目外，未声明直接复制这些项目的代码：
+本次通用化重构还参考了以下公开项目的接口设计、仓库组织和文档实践；除上述基础项目外，未声明直接复制这些项目的代码：
 
-- [TJ-CSCCG/TongjiThesis](https://github.com/TJ-CSCCG/TongjiThesis)：同济大学学位论文模板；参考其统一配置、跨平台编译说明和文档结构。
 - [jweihe/UCAS_Latex_Template](https://github.com/jweihe/UCAS_Latex_Template)：通用课程大作业模板；参考其“主文件 + 样式 + 图片 + 文献”的易用组织。
 - [nju-lug/NJUrepo](https://github.com/nju-lug/NJUrepo)：通用作业/实验报告模板；参考其多场景报告定位。
 - [tuna/thuthesis](https://github.com/tuna/thuthesis)：参考成熟高校模板的版本、发布和维护说明。
@@ -246,7 +245,7 @@ README 顶部横幅的桥梁、书本底图由 OpenAI GPT 图像生成模型辅�
 
 > LostSirius. *同济大学通用课程报告 LaTeX 模板*, version 2.0.0, 2026.
 
-若你的工作涉及模板本身的研究、再开发或发布，也请同时注明基础项目 `TJ-CSCCG/tongji-undergrad-thesis`。
+若你的工作涉及模板本身的研究、再开发或发布，也请同时注明基础项目 `TJ-CSCCG/TongjiThesis`。
 
 ## 许可证
 

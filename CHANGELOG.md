@@ -28,4 +28,4 @@
 
 ## 1.1.0 - 2025-09-18
 
-- 上游 `TJ-CSCCG/tongji-undergrad-thesis` 的基础版本。
+- 上游 `TJ-CSCCG/TongjiThesis`（原 `tongji-undergrad-thesis`）的基础版本。

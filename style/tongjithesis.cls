@@ -5,10 +5,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tongjithesis}[2026/08/28 v2.0.0 Modified General Tongji University Course Report Class]
 
-%% tongji-undergrad-thesis
+%% TongjiThesis (formerly tongji-undergrad-thesis)
 %% Copyright 2023-2025 TJ-CSCCG
 %% Copyright 2026 LostSirius (modifications)
-% This file is a modified derivative of TJ-CSCCG/tongji-undergrad-thesis.
+% This file is a modified derivative of TJ-CSCCG/TongjiThesis.
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -25,7 +25,7 @@
 % This modified work consists of style/tongjithesis.cls,
 % style/tongjithesis.cfg, and the example files distributed with this
 % repository. See NOTICE.md for provenance and modification details.
-% It is derived from https://github.com/TJ-CSCCG/tongji-undergrad-thesis.
+% It is derived from https://github.com/TJ-CSCCG/TongjiThesis.
 
 % ==========================================
 % Option Declaration

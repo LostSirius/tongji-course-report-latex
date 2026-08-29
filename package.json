@@ -22,6 +22,6 @@
   "bugs": {
     "url": "https://github.com/LostSirius/tongji-course-report-latex/issues"
   },
-  "upstream": "https://github.com/TJ-CSCCG/tongji-undergrad-thesis",
+  "upstream": "https://github.com/TJ-CSCCG/TongjiThesis",
   "license": "LPPL-1.3c"
 }
