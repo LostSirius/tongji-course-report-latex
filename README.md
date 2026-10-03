@@ -226,9 +226,11 @@ $env:EXTRA_LATEXMK_OPT="-shell-escape"; .\make.bat thesis
 │   ├── tongji.pdf           # 上游提供的封面/页眉示例标识
 │   └── tongji-latex-readme-banner.png # README 横向项目标识
 ├── bib/note.bib             # 参考文献数据库
-├── NOTICE.md                # 来源、改动和第三方声明
-├── CHANGELOG.md             # 版本变化
-├── SECURITY.md              # 安全报告与 shell escape 说明
+├── docs/
+│   ├── NOTICE.md            # 来源、改动和第三方声明
+│   ├── CHANGELOG.md         # 版本变化
+│   ├── CONTRIBUTING.md      # 贡献说明
+│   └── SECURITY.md          # 安全报告与 shell escape 说明
 └── CITATION.cff             # GitHub 引用元数据
 ```
 
@@ -246,7 +248,7 @@ $env:EXTRA_LATEXMK_OPT="-shell-escape"; .\make.bat thesis
 - [sjtug/SJTUThesis](https://github.com/sjtug/SJTUThesis)：参考 XeLaTeX/LuaLaTeX 与 UTF-8 使用说明。
 - [stone-zeng/fduthesis](https://github.com/stone-zeng/fduthesis)：参考集中式键值配置接口。
 
-完整的派生关系、许可证和改动说明见 [NOTICE.md](NOTICE.md)。
+完整的派生关系、许可证和改动说明见 [docs/NOTICE.md](docs/NOTICE.md)。
 
 README 顶部横幅的桥梁、书本底图由 OpenAI GPT 图像生成模型辅助创作，LaTeX 字标由标准 `\LaTeX` 排版命令渲染。它属于本修改版的非官方项目视觉元素，不是同济大学校徽，也不应被用于暗示学校官方认可。
 
@@ -258,4 +260,4 @@ README 顶部横幅的桥梁、书本底图由 OpenAI GPT 图像生成模型辅�
 
 ## 许可证
 
-本项目沿用 LaTeX Project Public License 1.3c，见 [LICENSE](LICENSE)。原项目版权和来源声明保留在文档类及 [NOTICE.md](NOTICE.md) 中。修改版由 LostSirius 维护。
+本项目沿用 LaTeX Project Public License 1.3c，见 [LICENSE](LICENSE)。原项目版权和来源声明保留在文档类及 [docs/NOTICE.md](docs/NOTICE.md) 中。修改版由 LostSirius 维护。

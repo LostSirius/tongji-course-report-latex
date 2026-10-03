@@ -2,7 +2,7 @@
 
 <!--在提交 PR 前，还请检查下列选项是否已经完成-->
 
-- [ ] 已通读 [CONTRIBUTING](../CONTRIBUTING.md) 文档中对 Pull request 的流程规定。
+- [ ] 已通读 [CONTRIBUTING](../docs/CONTRIBUTING.md) 文档中对 Pull request 的流程规定。
 - [ ] 如果提供的是 “模板功能特性” 相关的代码，已经写好了较为易懂的注释，并修改了对应的文档。
 - [ ] 如果提供的是 “模板功能特性” 相关的代码，已尽可能在各平台上进行了测试。
 - [ ] 确定该部分（:warning: 提交 PR 需要注意的事项）已在正式 PR 中被删去。

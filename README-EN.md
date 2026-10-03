@@ -146,7 +146,7 @@ The generalization work also consulted the public interfaces, repository organiz
 - [sjtug/SJTUThesis](https://github.com/sjtug/SJTUThesis)
 - [stone-zeng/fduthesis](https://github.com/stone-zeng/fduthesis)
 
-See [NOTICE.md](NOTICE.md) for the complete provenance, license, and modification notice.
+See [docs/NOTICE.md](docs/NOTICE.md) for the complete provenance, license, and modification notice.
 
 The bridge-and-book artwork in the banner was created with assistance from an OpenAI GPT image generation model. The LaTeX wordmark was rendered with the standard `\LaTeX` typesetting command. This is an unofficial project identity, not the Tongji University seal, and must not be used to imply official endorsement.
 
@@ -158,4 +158,4 @@ For template research, redistribution, or derivative development, please also ac
 
 ## License
 
-This project remains licensed under the LaTeX Project Public License 1.3c. See [LICENSE](LICENSE). Original copyright and provenance notices are preserved in the class file and [NOTICE.md](NOTICE.md). The modified version is maintained by LostSirius.
+This project remains licensed under the LaTeX Project Public License 1.3c. See [LICENSE](LICENSE). Original copyright and provenance notices are preserved in the class file and [docs/NOTICE.md](docs/NOTICE.md). The modified version is maintained by LostSirius.

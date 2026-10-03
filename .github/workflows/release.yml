@@ -14,8 +14,8 @@ on:
       - "style/**"
       - "figures/**"
       - "README*.md"
-      - "NOTICE.md"
-      - "CHANGELOG.md"
+      - "docs/NOTICE.md"
+      - "docs/CHANGELOG.md"
       - "CITATION.cff"
       - ".github/workflows/release.yml"
       - "package.json"
@@ -27,8 +27,8 @@ on:
       - "style/**"
       - "figures/**"
       - "README*.md"
-      - "NOTICE.md"
-      - "CHANGELOG.md"
+      - "docs/NOTICE.md"
+      - "docs/CHANGELOG.md"
       - "CITATION.cff"
       - ".github/workflows/release.yml"
       - "package.json"
@@ -717,7 +717,7 @@ jobs:
             - [Upstream Project](https://github.com/TJ-CSCCG/TongjiThesis)
 
             ### 📝 Changelog
-            See `CHANGELOG.md` in the source archive for the complete version history.
+            See `docs/CHANGELOG.md` in the source archive for the complete version history.
 
             ### 🙏 Acknowledgments
             Derived from the TJ-CSCCG `TongjiThesis` project and informed by the public documentation practices of other university LaTeX templates.
