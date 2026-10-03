@@ -63,7 +63,7 @@ jobs:
         run: |
           # Use jq to extract metadata from package.json if it exists
           if [ -f package.json ]; then
-            PACKAGE_VERSION=$(jq -r '.version // "2.0.0"' package.json)
+            PACKAGE_VERSION=$(jq -r '.version // "2.1.0"' package.json)
             PACKAGE_AUTHOR=$(jq -r '.author // "LostSirius"' package.json)
             PACKAGE_DATE=$(date +%Y/%m/%d)
 
@@ -75,7 +75,7 @@ jobs:
 
           else
             # Default values if package.json doesn't exist
-            PACKAGE_VERSION="2.0.0"
+            PACKAGE_VERSION="2.1.0"
             PACKAGE_AUTHOR="LostSirius"
             PACKAGE_DATE=$(date +%Y/%m/%d)
 

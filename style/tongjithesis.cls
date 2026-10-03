@@ -3,7 +3,7 @@
 % tongjithesis -- General Course Report Template for Tongji University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{tongjithesis}[2026/08/28 v2.0.0 Modified General Tongji University Course Report Class]
+\ProvidesClass{tongjithesis}[2026/10/04 v2.1.0 Modified General Tongji University Course Report Class]
 
 %% TongjiThesis (formerly tongji-undergrad-thesis)
 %% Copyright 2023-2025 TJ-CSCCG
@@ -54,11 +54,13 @@
 % 该类提供包括但不限于 \heiti \zihao 等指令
 \LoadClass[UTF8,a4paper]{ctexart}
 
+\RequirePackage{xcolor}
+
 % ==========================================
 % Required Packages
 % ==========================================
 % Page layout
-\setlength{\headheight}{43pt}
+\setlength{\headheight}{34pt}
 \RequirePackage[a4paper,top=4.2cm,bottom=2.7cm,left=2.55cm,right=2.55cm]{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
@@ -112,23 +114,31 @@
 
 % Always load listings package first (mandatory)
 \RequirePackage{listings}
-\definecolor{bg}{rgb}{0.96,0.96,0.96}
-\definecolor{commentcolor}{rgb}{0.0,0.6,0.0}
-\definecolor{stringcolor}{rgb}{0.58,0.0,0.82}
-\definecolor{keywordcolor}{rgb}{0.0,0.0,0.8}
+\definecolor{bg}{HTML}{F7F7F7}
+\definecolor{commentcolor}{HTML}{000000}
+\definecolor{stringcolor}{HTML}{000000}
+\definecolor{keywordcolor}{HTML}{000000}
 \lstset{
   frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!45},
   backgroundcolor=\color{bg},
-  basicstyle=\small\ttfamily,
+  basicstyle=\zihao{-5}\ttfamily,
   keywordstyle=\color{keywordcolor}\bfseries,
   commentstyle=\color{commentcolor}\itshape,
   stringstyle=\color{stringcolor},
   numbers=left,
-  numberstyle=\tiny,
+  numberstyle=\tiny\color{black!45},
+  numbersep=8pt,
   breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
   showstringspaces=false,
   captionpos=b,
-  xleftmargin=2em,
+  aboveskip=10pt,
+  belowskip=6pt,
+  xleftmargin=2.4em,
+  framexleftmargin=0.5em,
   tabsize=4,
   escapeinside=||
 }
@@ -183,17 +193,69 @@
 }
 
 % Cross-referencing and hyperlinks
-\RequirePackage[colorlinks,allcolors=black,unicode=true]{hyperref}
+\RequirePackage[colorlinks,allcolors=black,unicode=true,bookmarksnumbered=true]{hyperref}
 \RequirePackage{nameref}
 \RequirePackage[nameinlink,noabbrev]{cleveref}
 
 % Units and graphics
 \RequirePackage{siunitx}[=v2]
-\RequirePackage{tikz}
+\sisetup{
+  detect-weight=true,
+  detect-inline-weight=math,
+  group-minimum-digits=4,
+}
+\robustify{\textbf}
+\robustify{\bfseries}
 
-% Caption customization
-\DeclareCaptionLabelSeparator{twospace}{\ ~}
-\RequirePackage[font=small,labelsep=twospace]{caption}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\tikzset{
+  tongji node/.style={
+    rectangle,
+    rounded corners=1.5pt,
+    draw=black,
+    line width=0.7pt,
+    fill=white,
+    align=center,
+    font=\small,
+    inner xsep=8pt,
+    inner ysep=5pt,
+    minimum height=2.5em,
+  },
+  tongji arrow/.style={
+    -{Stealth[length=2.2mm,width=1.6mm]},
+    draw=black,
+    line width=0.7pt,
+  },
+}
+
+
+% 图题在下、表题在上；单行题注居中，多行题注悬挂对齐。
+\DeclareCaptionFont{tongjicaption}{\zihao{5}\songti}
+\DeclareCaptionFont{tongjicaptionlabel}{\zihao{5}\heiti}
+\DeclareCaptionLabelSeparator{tongji}{\quad}
+\captionsetup{
+  font=tongjicaption,
+  labelfont=tongjicaptionlabel,
+  labelsep=tongji,
+  format=hang,
+  justification=justified,
+  singlelinecheck=true,
+  skip=8pt,
+  hypcap=true,
+}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+\captionsetup[lstlisting]{position=bottom}
+\captionsetup[subfigure]{
+  font=tongjicaption,
+  labelfont=tongjicaptionlabel,
+  labelformat=parens,
+  labelsep=space,
+  justification=centering,
+  singlelinecheck=true,
+  skip=4pt,
+}
 
 % ==========================================
 % General Configurations
@@ -201,6 +263,11 @@
 
 % Line spacing
 \setstretch{1.5}  % 设置全文行距为 1.5
+\AtBeginDocument{%
+  \clubpenalty=10000
+  \widowpenalty=10000
+  \displaywidowpenalty=10000
+}
 
 % ==========================================
 % Page Layout
@@ -214,14 +281,33 @@
 }
 \let\cleardoublepage\clearemptydoublepage
 
+% 页眉、页脚横线。用页眉盒的实际宽度绘制，避免比版心更粗的默认线。
+\newcommand{\tongjiheadrule}{%
+	{\color{black}\hrule height 0.7pt width\headwidth}%
+	\vskip-0.7pt%
+}
+\newcommand{\tongjifootrule}{%
+	\vskip-0.45pt%
+	{\color{black}\hrule height 0.4pt width\headwidth}%
+}
+
+% 右上角报告类型与左侧标识垂直对齐，避免贴在页眉线上。
+\newcommand{\tongjiheadmark}{%
+	\raisebox{2.2mm}[0pt][0pt]{%
+		\zihao{-4}\heiti\tongjitrackchars{0.12em}{\tongjireporttype}%
+	}%
+}
+
 % 设置摘要与目录页样式（如页眉、页脚等）
 \fancypagestyle{firststyle}{
 	\fancyhf{}
 	\pagenumbering{Roman}                    	% 页数使用罗马数字
-	\fancyhead[L]{~ \includegraphics[height=1.14cm]{\tongjilogopath}~}   %页眉左侧插入同济大学logo
-	\fancyhead[R]{\large ~\tongjireporttype~\\}
-	\fancyfoot[C]{\large \thepage}
-	\renewcommand{\headrulewidth}{1.8pt}     	% 页眉横线
+	\fancyhead[L]{\includegraphics[height=0.95cm]{\tongjilogopath}}
+	\fancyhead[R]{\tongjiheadmark}
+	\fancyfoot[C]{\zihao{5}\thepage}
+	\renewcommand{\headrule}{\tongjiheadrule}
+	\renewcommand{\headrulewidth}{0.7pt}
+	\renewcommand{\footrule}{}
 	\renewcommand{\footrulewidth}{0pt}
 }
 
@@ -229,11 +315,13 @@
 \fancypagestyle{mainstyle}{
 	\fancyhf{}
 	\pagenumbering{arabic}
-	\fancyhead[L]{~ \includegraphics[height=1.14cm]{\tongjilogopath}~}   %页眉左侧插入同济大学logo
-	\fancyhead[R]{\large ~\tongjireporttype~\\}
-	\fancyfoot[R]{{\large 共\quad \pageref{LastPage}\quad 页\quad 第\quad \thepage \quad 页}}
-	\renewcommand{\headrulewidth}{1.8pt}     	% 页眉横线
-	\renewcommand{\footrulewidth}{1.8pt}     	% 页脚横线
+	\fancyhead[L]{\includegraphics[height=0.95cm]{\tongjilogopath}}
+	\fancyhead[R]{\tongjiheadmark}
+	\fancyfoot[R]{\zihao{5}共\quad\pageref{LastPage}\quad 页\quad 第\quad\thepage\quad 页}
+	\renewcommand{\headrule}{\tongjiheadrule}
+	\renewcommand{\headrulewidth}{0.7pt}
+	\renewcommand{\footrule}{\tongjifootrule}
+	\renewcommand{\footrulewidth}{0.4pt}
 }
 
 % ==========================================
@@ -241,7 +329,7 @@
 % ==========================================
 
 % 表格内所有字体均为小五：\zihao{-5}
-\AtBeginEnvironment{table}{\zihao{-5}}
+\AtBeginEnvironment{table}{\zihao{-5}\renewcommand{\arraystretch}{1.18}}
 \AtBeginEnvironment{tabular}{\zihao{-5}}
 \AtBeginEnvironment{tabularx}{\zihao{-5}}
 \AtBeginEnvironment{longtable}{\zihao{-5}}
@@ -254,11 +342,11 @@
 % 设置有序列表与无序列表格式
 \setlistdepth{2}
 
-\setlist[enumerate]{nosep,labelsep=0pt}
-\setlist[enumerate,1]{label=（\arabic*）,left=2em,nosep,labelsep=0pt,wide=\parindent}
-\setlist[enumerate,2]{label=\Circled{\arabic*},nosep,labelsep=0pt,labelwidth=1em,listparindent=0pt}
+\setlist[enumerate]{itemsep=0.22em,parsep=0pt,topsep=0.45em,labelsep=0.45em}
+\setlist[enumerate,1]{label=（\arabic*）,left=2em,wide=\parindent}
+\setlist[enumerate,2]{label=\Circled{\arabic*},labelwidth=1.4em,listparindent=0pt}
 
-\setlist[itemize]{nosep}
+\setlist[itemize]{itemsep=0.22em,parsep=0pt,topsep=0.45em}
 \setlist[itemize,1]{wide=\parindent}
 \setlist[itemize,2]{wide=2\parindent}
 
@@ -310,7 +398,7 @@
 	section={% 一级标题
 	  format={\centering\heiti\zihao{4}}, % 格式：四号黑体居中
 	  aftername={\quad}, % 序号与题名间空 4 格
-	  beforeskip={.5\baselineskip}, % 段前 0.5 行
+	  beforeskip={1.15\baselineskip}, % 段前约 1 行，节与节连续排版时留出间隔
 	  afterskip={.5\baselineskip}, % 段后 0.5 行
 	 },
 	subsection={% 二级标题
@@ -350,11 +438,6 @@
 
 \setcounter{secnumdepth}{5}
 
-\makeatletter
-\AtBeginDocument{\let\c@listing\c@figure}
-\AtBeginDocument{\let\c@lstlisting\c@figure}
-\makeatother
-
 % ==========================================
 % Float Settings
 % ==========================================
@@ -366,11 +449,27 @@
 \restylefloat{listing}      % listing 环境默认为 ruled，修改为 plain，将 caption 放在下方
 \sloppy
 
+\setlength{\floatsep}{12pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{16pt plus 3pt minus 4pt}
+\setlength{\intextsep}{12pt plus 2pt minus 2pt}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{5}
+
 % ==========================================
 % Math and Theorem Environments
 % ==========================================
 
-\theoremstyle{definition}
+\newtheoremstyle{tongji}
+  {0.7em}{0.7em}
+  {}{}
+  {\heiti}{}
+  {0.6em}
+  {}
+\theoremstyle{tongji}
 \newtheorem{thm}{定理\hspace{0.05pt}}[section]
 \newtheorem{cor}{推论\hspace{0.05pt}}[section]
 \newtheorem{lem}{引理\hspace{0.05pt}}[section]
@@ -394,29 +493,16 @@
 % Algorithm and Code Listing Settings
 % ==========================================
 
-% 伪代码
-\renewcommand{\algorithmicrequire}{\textbf{输入: }}
-\renewcommand{\algorithmicensure}{\textbf{输出: }}
-\makeatletter
-\renewenvironment{algorithm}
-{
-  \vskip 20pt
-  \refstepcounter{algorithm}% New algorithm
-  \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
-  \renewcommand{\caption}[2][\relax]{% 使用中文 caption
-    {\raggedright\textbf{算法~\thealgorithm} ##2\par}%
-    \ifx\relax##1\relax % #1 is \relax
-      \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
-    \else % #1 is not \relax
-      \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
-    \fi
-    \kern2pt\hrule\kern2pt
-  }
-}{
-  \kern2pt\hrule\relax
-  \vskip 20pt
-}% \@fs@post for \@fs@ruled
-\makeatother
+% 伪代码。保留 algorithm 宏包的浮动体，因此可以写 \begin{algorithm}[htbp]。
+\floatname{algorithm}{算法}
+\renewcommand{\listalgorithmname}{算法列表}
+\AtBeginEnvironment{algorithm}{\zihao{5}}
+\renewcommand{\algorithmicrequire}{\textbf{输入：}}
+\renewcommand{\algorithmicensure}{\textbf{输出：}}
+\algrenewcommand\algorithmicfor{\textbf{对于}}
+\algrenewcommand\algorithmicdo{}
+\algrenewcommand\algorithmicreturn{\textbf{返回}}
+\algrenewtext{EndFor}{\textbf{结束}}
 
 % ==========================================
 % Cross-Referencing Commands
@@ -425,7 +511,7 @@
 % 交叉引用
 \newcommand*{\secref}[1]{第~\ref{#1}~节}
 \newcommand*{\algoref}[1]{算法~\ref{#1}~}
-\renewcommand*{\eqref}[1]{公式（\ref{#1}）}
+\renewcommand*{\eqref}[1]{\mbox{公式（\ref{#1}）}}
 \newcommand*{\tabref}[1]{\tablename~\ref{#1}~}
 \newcommand*{\figref}[1]{\figurename~\ref{#1}~}
 
@@ -569,20 +655,85 @@
 	\zihao{4}\heiti{#1} & \ulinecentered{#2} \\%
 }
 
+\newlength{\tongjicoverrulewidth}
+% 与 information 环境中两列宽度一致：5em + 22em，另加两侧和列间的 \tabcolsep。
+\newcommand{\tongjisetcoverrulewidth}{%
+	\begingroup
+		\zihao{-3}%
+		\setlength{\tongjicoverrulewidth}{\dimexpr27em+32pt\relax}%
+		\ifdim\tongjicoverrulewidth>\textwidth
+			\setlength{\tongjicoverrulewidth}{\textwidth}%
+		\fi
+		\global\tongjicoverrulewidth=\tongjicoverrulewidth
+	\endgroup
+}
+
+\ExplSyntaxOn
+\seq_new:N \l_tongji_letters_seq
+\cs_new_protected:Npn \tongji_track_word:nn #1 #2
+  {
+    \seq_set_split:Nnn \l_tongji_letters_seq { } { #2 }
+    \seq_use:Nn \l_tongji_letters_seq { \hspace { #1 } }
+  }
+\cs_new_protected:Npn \tongji_track_text:nnn #1 #2 #3
+  {
+    \tl_set:Nx \l_tmpa_tl { #3 }
+    \seq_set_split:NnV \l_tmpa_seq { ~ } \l_tmpa_tl
+    \seq_clear:N \l_tmpb_seq
+    \seq_map_inline:Nn \l_tmpa_seq
+      {
+        \seq_put_right:Nn \l_tmpb_seq { \tongji_track_word:nn { #1 } { ##1 } }
+      }
+    \seq_use:Nn \l_tmpb_seq { \hspace { #2 } }
+  }
+\cs_new_protected:Npn \tongji_track_upper:n #1
+  {
+    \tl_set:Nx \l_tmpa_tl { \text_uppercase:n { #1 } }
+    \exp_args:Nnno \tongji_track_text:nnn { 0.18em } { 0.75em } { \l_tmpa_tl }
+  }
+\NewDocumentCommand \tongjitrackupper { m }
+  { \tongji_track_upper:n { #1 } }
+\NewDocumentCommand \tongjitrackchars { m m }
+  { \tongji_track_text:nnn { #1 } { 0.9em } { #2 } }
+\ExplSyntaxOff
+
+\newlength{\tongjicovertypewidth}
+\newlength{\tongjicoverengwidth}
+\newcommand{\tongjicovertype}{%
+	\settowidth{\tongjicovertypewidth}{\tongjireporttype}%
+	\ifdim\tongjicovertypewidth>0.78\tongjicoverrulewidth
+		\tongjireporttype
+	\else
+		\tongjitrackchars{0.42em}{\tongjireporttype}%
+	\fi
+}
+
 % 设置封面
 \newcommand{\MakeCover}[0]{
 	\thispagestyle{empty}
+	\hypersetup{
+		pdftitle={\tongjithesistitle},
+		pdfauthor={\tongjiauthor},
+	}
+	\tongjisetcoverrulewidth
+	% 正文上边距大于下边距。这里少留一段，使封面内容在纸面上上下留白相等。
+	\vspace*{\fill}%
+	\vspace*{-\dimexpr1in+\topmargin+\headheight+\headsep
+		-(\paperheight-\textheight-1in-\topmargin-\headheight-\headsep)\relax}%
+	\vspace*{38.4pt}%
 	\begin{center}
-		\vspace*{-1.2cm}
-
-		\includegraphics[height=1.6cm]{\tongjilogopath}
-
-		\zihao{4}\MakeUppercase{\textbf{\tongjiuniversityeng}}
-		\vskip 12pt
-
-		% 报告类型
-		\zihao{2}\heiti{\tongjireporttype}
-		\vskip 20pt
+		\includegraphics[height=1.42cm]{\tongjilogopath}\par
+		\vspace{0.95em}
+		{\zihao{5}%
+			\settowidth{\tongjicoverengwidth}{\tongjitrackupper{\tongjiuniversityeng}}%
+			\tongjitrackupper{\tongjiuniversityeng}\par
+			\nointerlineskip
+			\vspace{1.6pt}%
+			{\color{black}\rule{\dimexpr\tongjicoverengwidth+0.45em\relax}{0.65pt}}\par
+		}%
+		\vspace{2.85em}
+		{\zihao{1}\heiti\tongjicovertype}\par
+		\vspace{2.65em}
 
 		% 报告基本信息
 		\begin{information}{M{5em}M{22em}}
@@ -600,8 +751,8 @@
 			\tongjicoverrow{日\quad{}\quad{}期}{\tongjireportdate}
 		\end{information}
 
-		\vskip 12pt
 	\end{center}
+	\vspace*{\fill}%
 }
 
 % 设置中文摘要页
@@ -617,9 +768,7 @@
 	\end{spacing}
 
 	\vskip 5mm
-	\noindent{\songti\zihao{5}{%
-			\textbf{关键词：}#2
-		}}~\\
+	\noindent{\heiti\zihao{5}关键词：}{\songti\zihao{5}#2}\par
 }
 
 % 设置英文摘要页
@@ -641,9 +790,7 @@
 	\end{spacing}
 
 	\vskip 13.65pt % 小五字体单倍行距 13.65pt
-	\noindent{\heiti\zihao{5}
-		\textbf{Key words: }#2
-	}
+	\noindent{\heiti\zihao{5}Key words: }{\songti\zihao{5}#2}
 	\par
 }
 

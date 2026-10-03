@@ -6,7 +6,7 @@
   <h1>同济大学通用课程报告 LaTeX 模板</h1>
   <p>一个面向同济大学各学院、各学科的现代化、易配置、非官方课程报告模板</p>
   <p>
-    <a href="https://github.com/LostSirius/tongji-course-report-latex/releases/tag/v2.0.0"><img src="https://img.shields.io/badge/version-2.0.0-0b5cad" alt="Version 2.0.0"></a>
+    <a href="https://github.com/LostSirius/tongji-course-report-latex/releases/tag/v2.1.0"><img src="https://img.shields.io/badge/version-2.1.0-0b5cad" alt="Version 2.1.0"></a>
     <a href="https://github.com/LostSirius/tongji-course-report-latex/actions/workflows/test.yaml"><img src="https://github.com/LostSirius/tongji-course-report-latex/actions/workflows/test.yaml/badge.svg" alt="Build status"></a>
     <a href="https://github.com/LostSirius/tongji-course-report-latex/actions/workflows/jekyll-gh-pages.yml"><img src="https://github.com/LostSirius/tongji-course-report-latex/actions/workflows/jekyll-gh-pages.yml/badge.svg" alt="Pages status"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-LPPL--1.3c-1468a0" alt="LPPL 1.3c"></a>
@@ -29,6 +29,7 @@
 - 学院、系所、专业、学期和班级均可配置；可选字段留空后自动隐藏。
 - 正文骨架兼顾理工医科、人文社科、经管法、建筑设计与艺术类写作。
 - 支持公式、定理、表格、图片、算法、代码、附录和交叉引用。
+- 正文带有可替换的三线表、分组表头、流程图、并排子图、算法和代码示例。
 - 默认使用零外部依赖的 `listings`；可选 `minted` 代码高亮。
 - 支持 XeLaTeX 和 LuaLaTeX，默认使用 TeX Live 自带的 Fandol 字体。
 - 可按课程要求选择 `biblatex + biber` 或 `BibTeX + gbt7714`。
@@ -145,14 +146,22 @@
 
 章节只是通用起点，可以直接重命名、增删或重排。课程要求较短时，也可以只保留“概述—正文—总结”。
 
+## 图表、公式与代码
+
+示例正文按课程报告的常见需要准备了可直接替换的写法：
+
+- `\tabref{tab:paths}`、`\tabref{tab:scores}`：无竖线的三线表。结果表使用分组表头，并加粗各列最优值。
+- `\figref{fig:flow}`、`\figref{fig:results}`：流程图，以及并排子图。
+- `\eqref{eq:score}`、`\eqref{eq:mean}`、`\algoref{alg:score}`、`\listingref{lst:score}`：单行公式、对齐公式、算法和代码。
+- `\cite{gbt7714-2015}`：参考文献。默认使用 `biblatex + biber` 和 GB/T 7714—2025 数字制。
+
+图片放在 `figures/`。流程和统计图优先使用矢量图；照片或扫描件再用 `\includegraphics[width=\linewidth]{...}` 插入。表题放在表格上方，图题放在插图下方。示例中的方案和分数只用于演示版式，提交前请替换。
+
 ## 参考文献
 
-`main.tex` 提供两种可选配置：
+`main.tex` 默认启用 `biblatex + biber`，样式为 `gb7714-2025`。示例文献在 `bib/note.bib`，正文用 `\cite` 引用。若要改回传统 BibTeX，先注释掉 `biblatex` 和 `\printbibliography`，再启用文件中的方案 B。
 
-- `biblatex + biber`：功能完整，推荐用于新文档。
-- `BibTeX + gbt7714`：适合已有 BibTeX 工作流。
-
-示例默认使用 GB/T 7714 数字制样式，但不同学科可能要求作者—年份制、APA、Chicago、IEEE 或其他格式。模板不会替代课程对引用规范的要求。
+不同学科可能要求作者—年份制、APA、Chicago、IEEE 或其他格式。模板不会替代课程对引用规范的要求。需要 2015 版国标时，把 `style` 改为 `gb7714-2015`。
 
 ## 编译
 
@@ -243,7 +252,7 @@ README 顶部横幅的桥梁、书本底图由 OpenAI GPT 图像生成模型辅�
 
 如在论文、课程项目或再发布版本中需要引用本项目，可使用仓库的 `CITATION.cff`，或写作：
 
-> LostSirius. *同济大学通用课程报告 LaTeX 模板*, version 2.0.0, 2026.
+> LostSirius. *同济大学通用课程报告 LaTeX 模板*, version 2.1.0, 2026.
 
 若你的工作涉及模板本身的研究、再开发或发布，也请同时注明基础项目 `TJ-CSCCG/TongjiThesis`。
 

@@ -6,7 +6,7 @@
   <h1>General Tongji University Course Report LaTeX Template</h1>
   <p>A modern, configurable, unofficial report template for every Tongji University discipline</p>
   <p>
-    <a href="https://github.com/LostSirius/tongji-course-report-latex/releases/tag/v2.0.0"><img src="https://img.shields.io/badge/version-2.0.0-0b5cad" alt="Version 2.0.0"></a>
+    <a href="https://github.com/LostSirius/tongji-course-report-latex/releases/tag/v2.1.0"><img src="https://img.shields.io/badge/version-2.1.0-0b5cad" alt="Version 2.1.0"></a>
     <a href="https://github.com/LostSirius/tongji-course-report-latex/actions/workflows/test.yaml"><img src="https://github.com/LostSirius/tongji-course-report-latex/actions/workflows/test.yaml/badge.svg" alt="Build status"></a>
     <a href="https://github.com/LostSirius/tongji-course-report-latex/actions/workflows/jekyll-gh-pages.yml"><img src="https://github.com/LostSirius/tongji-course-report-latex/actions/workflows/jekyll-gh-pages.yml/badge.svg" alt="Pages status"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-LPPL--1.3c-1468a0" alt="LPPL 1.3c"></a>
@@ -29,6 +29,7 @@ Suitable for course papers, major assignments, laboratory reports, design projec
 - Optional department, semester, and class fields that disappear when empty.
 - A discipline-neutral outline suitable for STEM, medicine, humanities, social sciences, business, law, architecture, design, and arts.
 - Equations, theorems, tables, figures, algorithms, source code, appendices, and cross-references.
+- Replaceable examples of booktabs tables, grouped headers, a flowchart, subfigures, an algorithm, and code.
 - Dependency-free `listings` by default, with optional `minted`.
 - XeLaTeX and LuaLaTeX support with the TeX Live Fandol font set by default.
 - Optional `biblatex + biber` and `BibTeX + gbt7714` workflows.
@@ -97,9 +98,11 @@ Use `twoside` for two-sided output. `fontset=fandol` is recommended for Overleaf
 
 The outline is only a starting point and may be freely renamed, shortened, or reordered.
 
+The sample body includes a three-line table, a grouped header, a flowchart, side-by-side subfigures, an equation, an algorithm, and a code listing. Table captions sit above the table; figure captions sit below the figure. Place image files in `figures/` and include them with `\includegraphics[width=\linewidth]{...}`. The sample schemes and scores are placeholders and should be replaced before submission.
+
 ## Bibliography
 
-`main.tex` includes commented examples for `biblatex + biber` and `BibTeX + gbt7714`. GB/T 7714 numeric style is shown as a common default, but disciplines may require an author-year, APA, Chicago, IEEE, or another citation style.
+`main.tex` enables `biblatex + biber` with `gb7714-2025`. Sample entries live in `bib/note.bib` and are cited from the text. To use traditional BibTeX instead, comment out the biblatex setup and `\printbibliography`, then enable method B. Use `gb7714-2015` when a course still requires the 2015 edition. Other disciplines may require an author-year, APA, Chicago, or IEEE style.
 
 ## Build
 
@@ -149,7 +152,7 @@ The bridge-and-book artwork in the banner was created with assistance from an Op
 
 Suggested citation:
 
-> LostSirius. *General Tongji University Course Report LaTeX Template*, version 2.0.0, 2026.
+> LostSirius. *General Tongji University Course Report LaTeX Template*, version 2.1.0, 2026.
 
 For template research, redistribution, or derivative development, please also acknowledge the upstream `TJ-CSCCG/TongjiThesis` project.
 

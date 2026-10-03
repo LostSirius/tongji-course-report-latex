@@ -1,11 +1,36 @@
+% 写作提示：按逻辑或时间顺序写过程，并保留关键异常的处理依据。
 \section{分析、实验或实践过程}
 \label{sec:process}
 
 \subsection{实施条件}
-请说明研究环境、实验设备、软件工具、资料版本、调查场域、创作媒介或其他必要条件。
+示例只依赖已经记录的分项分数，不依赖特定软件、仪器或场地。需要重复计算时，可以把步骤写成算法或代码；课程不要求代码时，删去对应环境即可。
 
 \subsection{核心过程}
-请按逻辑或时间顺序展开分析、推导、实验、实现、调查或创作过程，可结合公式、表格、图像、流程图、访谈摘录或代码片段。
+\algoref{alg:score}是\eqref{eq:score}的逐步形式。算法标题放在上方，输入和输出单独列出。
+
+\begin{algorithm}[htbp]
+  \caption{由分项得分计算综合得分}
+  \label{alg:score}
+  \begin{algorithmic}[1]
+    \Require 分项得分 $s_1,\ldots,s_n$ 与权重 $w_1,\ldots,w_n$
+    \Ensure 综合得分 $S$
+    \State $S \gets 0$
+    \For{$i \gets 1,\ldots,n$}
+      \State $S \gets S + w_i s_i$
+    \EndFor
+    \State \Return $S$
+  \end{algorithmic}
+\end{algorithm}
+
+同一计算也可以写成代码，便于附上能够运行的实现。代码标题放在下方，见\listingref{lst:score}。
+
+\begin{lstlisting}[language=Python,caption={按权重汇总分项得分},label={lst:score}]
+def weighted_score(scores, weights):
+    total = 0.0
+    for score, weight in zip(scores, weights):
+        total += score * weight
+    return total
+\end{lstlisting}
 
 \subsection{关键问题及处理}
-请记录过程中遇到的关键困难、异常、材料限制、方法调整及其处理依据。
+示例里没有缺失值。若某一项没有记录，应先决定是补计、剔除，还是单独报告，并在\tabref{tab:scores}的表注里写明。

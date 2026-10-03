@@ -1,11 +1,77 @@
+% 写作提示：先给结果，再解释结果，最后说明它如何回应前面的问题。
 \section{结果与分析}
 \label{sec:results}
 
 \subsection{主要结果}
-请客观呈现研究发现、实验数据、系统表现、调查结果、论证结论或作品成果。
+三种方案的分项得分和综合得分见\tabref{tab:scores}。分组表头用短横线标出“分项得分”，表注说明权重和加粗数字的含义。加粗的是该列最大值。
+
+\begin{table}[htbp]
+  \centering
+  \caption{三种方案的分项得分与综合得分}
+  \label{tab:scores}
+  \begin{threeparttable}
+    \setlength{\tabcolsep}{7pt}
+    \begin{tabular}{l S[table-format=1.2] S[table-format=1.2] S[table-format=1.2] S[table-format=1.2]}
+      \toprule
+      & \multicolumn{3}{c}{分项得分} & \\
+      \cmidrule(lr){2-4}
+      {方案} & {完整性} & {准确性} & {表达} & {综合} \\
+      \midrule
+      方案 A & 0.72 & 0.68 & 0.75 & 0.71 \\
+      方案 B & 0.81 & \textbf{0.84} & 0.79 & 0.82 \\
+      方案 C & \textbf{0.86} & 0.83 & \textbf{0.88} & \textbf{0.86} \\
+      \bottomrule
+    \end{tabular}
+    \begin{tablenotes}[flushleft]
+      \item 综合得分按\eqref{eq:score}计算，三项权重均为 $1/3$。加粗数字为本列最高值。本表为版式示例。
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+\figref{fig:results}把评价维度和综合得分分开画。左图说明三项如何合成，右图只比较综合得分，避免在一张图里堆叠过多柱形。图中不另加标题，说明写在图题里。
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.46\textwidth}
+    \centering
+    \begin{tikzpicture}[node distance=4.2mm]
+      \node[tongji node, minimum width=4.35cm] (a) {完整性\quad $s_1$};
+      \node[tongji node, minimum width=4.35cm, below=of a] (b) {准确性\quad $s_2$};
+      \node[tongji node, minimum width=4.35cm, below=of b] (c) {表达\quad $s_3$};
+      \node[font=\small, below=4.5mm of c] {$w_1=w_2=w_3=1/3$};
+    \end{tikzpicture}
+    \caption{等权的三项指标}
+    \label{fig:criteria}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.50\textwidth}
+    \centering
+    \begin{tikzpicture}[x=1cm, y=0.038cm]
+      \draw[black!12, line width=0.4pt] (0,50) -- (4.85,50);
+      \draw[black!12, line width=0.4pt] (0,100) -- (4.85,100);
+      \fill[black] (0.55,0) rectangle (1.45,71);
+      \fill[black] (1.95,0) rectangle (2.85,82);
+      \fill[black] (3.35,0) rectangle (4.25,86);
+      \draw[black!70, line width=0.55pt] (0,0) -- (4.85,0);
+      \draw[black!70, line width=0.55pt] (0,0) -- (0,100);
+      \node[left=2pt, font=\scriptsize, text=black!65] at (0,0) {0};
+      \node[left=2pt, font=\scriptsize, text=black!65] at (0,50) {0.5};
+      \node[left=2pt, font=\scriptsize, text=black!65] at (0,100) {1.0};
+      \node[above=1pt, font=\scriptsize] at (1.00,71) {0.71};
+      \node[above=1pt, font=\scriptsize] at (2.40,82) {0.82};
+      \node[above=1pt, font=\scriptsize] at (3.80,86) {0.86};
+      \node[below=2pt, font=\scriptsize] at (1.00,0) {方案 A};
+      \node[below=2pt, font=\scriptsize] at (2.40,0) {方案 B};
+      \node[below=2pt, font=\scriptsize] at (3.80,0) {方案 C};
+    \end{tikzpicture}
+    \caption{综合得分}
+    \label{fig:bars}
+  \end{subfigure}
+  \caption{评价维度与综合得分。柱高与\tabref{tab:scores}的综合得分一致}
+  \label{fig:results}
+\end{figure}
 
 \subsection{结果分析}
-请结合前文方法与评价标准解释结果，可使用统计分析、案例比较、理论阐释、误差分析或设计评估。
+按综合得分，方案 C 高于方案 B，方案 B 高于方案 A。分项并不完全同序：方案 B 的准确性最高，方案 C 的完整性和表达最高。综合得分只用于总排序；判断某一项时，仍要回到对应列。
 
 \subsection{验证或论证}
-请说明结果如何回应研究问题或课程任务，并提供必要的对照、证据、引用或验证过程。
+把附录\tabref{tab:raw}代入\eqref{eq:score}，可以得到与\tabref{tab:scores}相同的综合得分。若两处不一致，应先检查权重和四舍五入，再解释方案之间的差异。

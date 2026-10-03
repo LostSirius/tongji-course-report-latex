@@ -1,11 +1,56 @@
+% 写作提示：说明总体路线、关键步骤，以及方法为何可靠。
 \section{研究或实践方法}
 \label{sec:method}
 
 \subsection{总体思路}
-请说明研究设计、论证路线、实验方案、工程技术路线、调查方法或创作构思。
+先固定评价标准，再按同一流程处理每个方案，最后汇总比较。\figref{fig:flow}是这一顺序的示意图。实验、调查、文本分析和方案设计都可以沿用它，只需替换每一步的具体工作。
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[node distance=8mm]
+    \node[tongji node] (q) {界定问题};
+    \node[tongji node, right=of q] (m) {选择方法};
+    \node[tongji node, right=of m] (p) {记录过程};
+    \node[tongji node, right=of p] (r) {分析结果};
+    \draw[tongji arrow] (q) -- (m);
+    \draw[tongji arrow] (m) -- (p);
+    \draw[tongji arrow] (p) -- (r);
+  \end{tikzpicture}
+  \caption{课程报告的基本工作流程}
+  \label{fig:flow}
+\end{figure}
+
+照片、扫描件或软件导出的图像放在 \texttt{figures/}，并按版心宽度插入，例如：
+\begin{center}
+  \verb|\includegraphics[width=0.8\linewidth]{figures/example.pdf}|
+\end{center}
+流程和统计图优先使用矢量图，打印后线条更清楚。
 
 \subsection{方法与步骤}
-请分步骤说明所采用的方法。可根据学科特点写作模型构建、实验流程、问卷访谈、文本细读、案例比较、田野调查、方案设计或作品制作。
+实施时按下面的顺序推进：
+\begin{enumerate}
+  \item 写清问题边界和评价指标。
+  \item 用同一流程处理每个方案。
+  \item 汇总得分，并让公式、表格和插图使用同一组数字。
+\end{enumerate}
+
+综合得分把三项分数合成一个结果，便于排序，也保留回到分项的可能：
+\begin{equation}
+  S = \sum_{i=1}^{n} w_i s_i, \qquad \sum_{i=1}^{n} w_i = 1
+  \label{eq:score}
+\end{equation}
+本例取 $n = 3$，且 $w_i = 1/3$。$s_i$ 是第 $i$ 项得分。计算时保留两位小数，与\tabref{tab:scores}一致。
+
+\begin{thm}
+若 $w_i = 1/n$，则综合得分等于各项得分的算术平均。
+\end{thm}
+\begin{pf}
+由\eqref{eq:score}，
+\begin{align}
+  S &= \sum_{i=1}^{n} \frac{1}{n} s_i \label{eq:mean}\\
+    &= \frac{1}{n}\sum_{i=1}^{n} s_i. \nonumber
+\end{align}
+\end{pf}
 
 \subsection{可靠性与合规性}
-请说明方法选择的理由、误差控制、伦理与隐私、引用规范、可复现性或安全措施；不适用时可删除本节。
+示例不涉及个人隐私、实验安全和未公开数据。若实际任务包含问卷、访谈、人体或场地信息，应在这里说明知情同意、匿名化，以及可复现材料放在何处。更换权重或指标时，公式、表格和插图要一起修改\footnote{只改其中一处，正文和附录中的数字就会对不上。}。

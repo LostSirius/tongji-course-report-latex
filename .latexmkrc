@@ -34,5 +34,7 @@ $clean_full_ext = '';
 ###################
 $max_repeat = 5;
 
-# Force directory creation if needed
-system('mkdir sections figures style bib');
+# Create project directories only when they are missing.
+foreach my $dir (qw(sections figures style bib)) {
+  mkdir $dir unless -d $dir;
+}

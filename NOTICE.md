@@ -19,7 +19,7 @@
 
 - 维护者：LostSirius
 - 修改版年份：2026
-- 当前版本：2.0.0
+- 当前版本：2.1.0
 
 相对于上游课程设计/大作业模板，本修改版主要进行了以下工作：
 
@@ -56,5 +56,5 @@
 
 一般课程作业只需按教师要求提交，无需在正文中引用模板。若研究、介绍、再开发或再发布本模板，建议同时注明：
 
-1. 本修改版：LostSirius, *同济大学通用课程报告 LaTeX 模板*, version 2.0.0, 2026。
+1. 本修改版：LostSirius, *同济大学通用课程报告 LaTeX 模板*, version 2.1.0, 2026。
 2. 直接上游：[TJ-CSCCG/TongjiThesis](https://github.com/TJ-CSCCG/TongjiThesis)。
